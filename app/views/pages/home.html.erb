@@ -1,2 +1,5 @@
 <h1>Home Exchange</h1>
 <%= link_to "Browse Flats", flats_path, class: "btn btn-primary" %>
+<% if user_signed_in? %>
+  <%= link_to "Go to Dashboard", dashboard_path, class: "btn btn-success", style: "margin-left: 10px;" %>
+<% end %>
