@@ -1,0 +1,16 @@
+<h1><%= @flat.name %></h1>
+<p><%= @flat.description %></p>
+
+<% if user_signed_in? %>
+  <%= form_with(model: [@flat, Booking.new], local: true) do |form| %>
+    <div>
+      <%= form.label :start_date %>
+      <%= form.date_field :start_date %>
+    </div>
+    <div>
+      <%= form.label :end_date %>
+      <%= form.date_field :end_date %>
+    </div>
+    <%= form.submit "Request Booking" %>
+  <% end %>
+<% end %>

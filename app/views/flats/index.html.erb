@@ -1,0 +1,7 @@
+<h1>Available Flats</h1>
+<% @flats.each do |flat| %>
+  <div>
+    <h2><%= link_to flat.name, flat %></h2>
+    <p><%= flat.description.truncate(100) %></p>
+  </div>
+<% end %>
