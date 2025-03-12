@@ -7,6 +7,7 @@ class FlatsController < ApplicationController
   end
 
   def show
+    @flat = Flat.find(params[:id])
   end
 
   def new
@@ -16,7 +17,7 @@ class FlatsController < ApplicationController
   def create
     @flat = current_user.flats.build(flat_params)
     if @flat.save
-      redirect_to @flat, notice: "Flat successfully listed!"
+      redirect_to flats_path, notice: "Flat successfully listed!"
     else
       render :new
     end
@@ -35,7 +36,7 @@ class FlatsController < ApplicationController
 
   def destroy
     @flat.destroy
-    redirect_to flats_path, notice: "Flat removed!"
+    redirect_to flats_path, notice: "Flat successfully deleted!"
   end
 
   private
@@ -45,6 +46,6 @@ class FlatsController < ApplicationController
   end
 
   def flat_params
-    params.require(:flat).permit(:name, :description)
+    params.require(:flat).permit(:name, :description, :price)
   end
 end

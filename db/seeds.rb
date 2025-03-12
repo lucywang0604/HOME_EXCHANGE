@@ -11,6 +11,6 @@
 lucy = User.create(email: 'lucy@example.com', password: 'password')
 john = User.create(email: 'john@example.com', password: 'password')
 
-Flat.create(name: 'Little flat in Paris', description: 'Some description', user: lucy)
-Flat.create(name: 'Giant flat in London', description: 'Some description', user: lucy)
-Flat.create(name: 'Cozy flat in Budapest', description: 'Some description', user: john)
+Flat.create(name: 'Little flat in Paris', description: 'Some description', price: 120, user: lucy)
+Flat.create(name: 'Giant flat in London', description: 'Some description', price: 250, user: lucy)
+Flat.create(name: 'Cozy flat in Budapest', description: 'Some description', price: 50, user: john)

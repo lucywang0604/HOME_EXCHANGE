@@ -13,6 +13,9 @@
       <%= form.label :end_date %>
       <%= form.date_field :end_date %>
     </div>
+
+    <p><strong>Price:</strong> $<%= @flat.price %> per night</p>
+
     <%= form.submit "Request Booking", class: "btn btn-primary" %>
   <% end %>
 <% end %>
