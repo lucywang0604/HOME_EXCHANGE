@@ -1,22 +1,11 @@
 <h1>List Your Property</h1>
 
-<%= form_with(model: @flat, local: true) do |form| %>
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name, class: "form-control" %>
-  </div>
-
-  <div>
-    <%= form.label :description %>
-    <%= form.text_area :description, class: "form-control" %>
-  </div>
-
-   <div>
-    <%= form.label :price, "Price per Night ($)" %>
-    <%= form.number_field :price, class: "form-control", step: 1, min: 0 %>
-  </div>
-
-  <%= form.submit "List Property", class: "btn btn-success" %>
+<%= simple_form_for @flat do |form| %>
+  <%= form.input :name %>
+  <%= form.input :description %>
+  <%= form.input :address %>
+  <%= form.input :price %>
+  <%= form.submit "List property", class: 'btn btn-success' %>
 <% end %>
 
 <!-- Back to Dashboard -->

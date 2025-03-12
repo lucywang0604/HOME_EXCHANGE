@@ -3,7 +3,18 @@ class FlatsController < ApplicationController
   before_action :set_flat, only: [:show, :edit, :update, :destroy]
 
   def index
-    @flats = Flat.all
+    @location = params[:query]
+    @markers = @flats.geocoded.map do |flat|
+      {
+        lat: flat.latitude,
+        lng: flat.longitude
+      }
+    end
+    if @location.present?
+      @flats = Flat.near(@location, 10)
+    else
+      @flats = Flat.all
+    end
   end
 
   def show
@@ -19,7 +30,7 @@ class FlatsController < ApplicationController
     if @flat.save
       redirect_to flats_path, notice: "Flat successfully listed!"
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -28,7 +39,7 @@ class FlatsController < ApplicationController
 
   def update
     if @flat.update(flat_params)
-      redirect_to @flat, notice: "Flat updated successfully!"
+      redirect_to flats_path, notice: "Flat updated successfully!"
     else
       render :edit
     end
@@ -46,6 +57,6 @@ class FlatsController < ApplicationController
   end
 
   def flat_params
-    params.require(:flat).permit(:name, :description, :price)
+    params.require(:flat).permit(:name, :description, :price, :address)
   end
 end

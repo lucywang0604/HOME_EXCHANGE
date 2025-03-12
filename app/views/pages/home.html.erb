@@ -3,3 +3,8 @@
 <% if user_signed_in? %>
   <%= link_to "Go to Dashboard", dashboard_path, class: "btn btn-success", style: "margin-left: 10px;" %>
 <% end %>
+
+<%= form_with url: flats_path, method: :get do |f| %>
+  <%= f.text_field :query %>
+  <%= f.submit %>
+<% end %>
