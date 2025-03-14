@@ -29,7 +29,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  color: black;  /* Ensures description and price text are black */
+  color: rgb(233, 228, 228);  /* Ensures description and price text are black */
+  font-weight: bold;
 }
 
 .flat-title {

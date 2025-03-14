@@ -4,7 +4,7 @@ import mapboxgl from 'mapbox-gl'
 // Connects to data-controller="map"
 export default class extends Controller {
   static values = {
-    apiKey: String
+    apiKey: String,
     markers: Array
   }
 
@@ -14,6 +14,18 @@ export default class extends Controller {
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v12"
+    })
+
+    this.map.addControl(new mapboxgl.NavigationControl());
+
+    this.#addMarkersToMap()
+  }
+
+  #addMarkersToMap() {
+    this.markersValue.forEach((marker) => {
+      new mapboxgl.Marker()
+        .setLngLat([ marker.lng, marker.lat ])
+        .addTo(this.map)
     })
   }
 }

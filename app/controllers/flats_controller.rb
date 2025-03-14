@@ -4,16 +4,18 @@ class FlatsController < ApplicationController
 
   def index
     @location = params[:query]
+
+    if @location.present?
+      @flats = Flat.near(@location, 10)
+    else
+      @flats = Flat.all
+    end
+
     @markers = @flats.geocoded.map do |flat|
       {
         lat: flat.latitude,
         lng: flat.longitude
       }
-    end
-    if @location.present?
-      @flats = Flat.near(@location, 10)
-    else
-      @flats = Flat.all
     end
   end
 

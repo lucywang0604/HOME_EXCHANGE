@@ -1,1 +1,77 @@
-// Specific CSS for your home-page
+/* Center the search bar in the middle of the page */
+.homepage-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+}
+
+/* Style for the search bar */
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-input {
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-button {
+  padding: 10px 15px;
+  background-color: #650751;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #a70c92;
+}
+
+.homepage-banner {
+  background-image: url('https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?w=1600&auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cmVhbCUyMGVzdGF0ZXMlMjBtb2Rlcm58ZW58MHx8MHx8fDA%3D');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh; /* Adjust height as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Stylish Title */
+.homepage-title {
+  font-family: 'Playfair Display', serif; /* Elegant font */
+  font-size: 48px; /* Increase size */
+  font-weight: bold; /* Make it stand out */
+  color: #2c2c2c; /* Dark gray for better contrast */
+  text-align: center;
+  padding: 20px 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Background for title area */
+.homepage-title-container {
+  background: rgba(255, 255, 255, 0.6); /* Light transparent background */
+  padding: 30px 0;
+}
+
+
+// Overriding mapbox-gl-geocoder
+
+.mapboxgl-ctrl-geocoder {
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}

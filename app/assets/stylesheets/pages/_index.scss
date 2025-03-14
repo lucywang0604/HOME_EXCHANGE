@@ -1,2 +1,13 @@
 // Import page-specific CSS files here.
 @import "home";
+
+
+.text {
+  font-family: 'Playfair Display', serif; /* Elegant font */
+  font-size: 48px; /* Increase size */
+  font-weight: bold; /* Make it stand out */
+  color: #2c2c2c; /* Dark gray for better contrast */
+  text-align: center;
+  padding: 20px 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}

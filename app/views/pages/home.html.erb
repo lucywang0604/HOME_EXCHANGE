@@ -1,10 +1,14 @@
-<h1>Home Exchange</h1>
-<%= link_to "Browse Flats", flats_path, class: "btn btn-primary" %>
-<% if user_signed_in? %>
-  <%= link_to "Go to Dashboard", dashboard_path, class: "btn btn-success", style: "margin-left: 10px;" %>
-<% end %>
+<div class="homepage-title-container">
+  <h1 class="homepage-title">Home Exchange</h1>
+</div>
+<div class="homepage-banner">
+  <div class="homepage-container">
+    <%= form_with url: flats_path, method: :get, class: "search-form" do |f| %>
 
-<%= form_with url: flats_path, method: :get do |f| %>
-  <%= f.text_field :query %>
-  <%= f.submit %>
-<% end %>
+      <div data-controller='address-autocomplete' data-address-autocomplete-api-key-value='<%= ENV['MAPBOX_API_KEY'] %>'>
+        <%= f.text_field :query, placeholder: "Search for a city...", autococomplete: "off", class: "search-input d-none", data: { address_autocomplete_target: "address" } %>
+      </div>
+      <%= f.submit "Search", class: "search-button" %>
+    <% end %>
+  </div>
+</div>
