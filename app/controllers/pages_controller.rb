@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    @my_flats = current_user.flats
     @my_bookings = current_user.bookings
     @received_bookings = current_user.flats.includes(:bookings).map(&:bookings).flatten
   end

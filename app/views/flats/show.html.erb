@@ -1,31 +1,32 @@
-<h1><%= @flat.name %></h1>
-<p><%= @flat.description %></p>
-
-<% if user_signed_in? %>
-  <%= form_with(model: [@flat, Booking.new], local: true,
-    data: { controller: "booking", action: "submit->booking#confirmBooking" }) do |form| %>
-
-    <div>
-      <%= form.label :start_date %>
-      <%= form.date_field :start_date %>
+<div class='container mb-5'>
+  <div class='row'>
+    <div class='py-5'>
+      <%= cl_image_tag @flat.image.key, height: 400, class: 'object-fit-cover w-100 rounded-4' %>
     </div>
-    <div>
-      <%= form.label :end_date %>
-      <%= form.date_field :end_date %>
+  </div>
+
+  <div class="row">
+    <div class='col-12 col-md-8'>
+      <h1 class='text-left'><%= @flat.name %></h1>
+      <p><%= @flat.description %></p>
+      <p><strong>Price:</strong> $<%= @flat.price %> per night</p>
     </div>
+    <div class='col-12 col-md-4'>
+      <div class='p-4 rounded-2 bg-white shadow'>
+        <%= simple_form_for([@flat, Booking.new], html: {
+          data: {
+            controller: 'flatpickr'
+          }
+        }) do |f| %>
+          <%= f.input :start_date, as: :string, input_html: { data: { flatpickr_target: 'startDateInput' } } %>
+          <%= f.input :end_date, as: :string, input_html: { data: { flatpickr_target: 'endDateInput' } } %>
+          <%= f.submit "Book now", class: 'btn btn-success' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
-    <p><strong>Price:</strong> $<%= @flat.price %> per night</p>
-
-    <%= form.submit "Request Booking", class: "btn btn-primary" %>
-  <% end %>
-<% end %>
-
-<!-- 🔙 Back to Home Button -->
-<div style="margin-top: 20px;">
-  <%= link_to "Back to Home", root_path, class: "btn btn-secondary" %>
-</div>
-
-<!-- 🔙 Return to Flat List Button -->
-<div style="margin-top: 20px;">
-  <%= link_to "Return to Flat List", flats_path, class: "btn btn-secondary" %>
+  <div class="row my-5">
+    <div data-controller='map' data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" style="height: 400px; width: 100%"></div>
+  </div>
 </div>

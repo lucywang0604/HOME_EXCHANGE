@@ -42,9 +42,9 @@
   text-decoration: underline;
 }
 
-h2 {
-  min-height: 60px; /* Adjust based on expected title lengths */
-}
+// h2 {
+//   min-height: 60px; /* Adjust based on expected title lengths */
+// }
 
 .flat-info h2 {
   color: black; /* Makes the title inside each card black */
@@ -54,10 +54,10 @@ h2 {
   color: black; /* Makes all paragraphs black */
 }
 
-h1 {
-  text-align: center;  /* Centers the title */
-  width: 100%;         /* Ensures it spans full width */
-}
+// h1 {
+//   text-align: center;  /* Centers the title */
+//   width: 100%;         /* Ensures it spans full width */
+// }
 
 .button-group {
   display: flex;

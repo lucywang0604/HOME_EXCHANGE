@@ -21,6 +21,12 @@ class FlatsController < ApplicationController
 
   def show
     @flat = Flat.find(params[:id])
+    @markers = [
+      {
+        lat: @flat.latitude,
+        lng: @flat.longitude
+      }
+    ]
   end
 
   def new
@@ -41,7 +47,7 @@ class FlatsController < ApplicationController
 
   def update
     if @flat.update(flat_params)
-      redirect_to flats_path, notice: "Flat updated successfully!"
+      redirect_to dashboard_path, notice: "Flat updated successfully!"
     else
       render :edit
     end
@@ -59,6 +65,6 @@ class FlatsController < ApplicationController
   end
 
   def flat_params
-    params.require(:flat).permit(:name, :description, :price, :address)
+    params.require(:flat).permit(:name, :description, :price, :address, :image)
   end
 end
